@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 15 for Windows Desktop
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfejs_Kochanski_Klimek_Koza", "Interfejs_Kochanski_Klimek_Koza\Interfejs_Kochanski_Klimek_Koza.csproj", "{32B0E44F-3F29-487A-BCA1-E8E75601708A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32B0E44F-3F29-487A-BCA1-E8E75601708A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32B0E44F-3F29-487A-BCA1-E8E75601708A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32B0E44F-3F29-487A-BCA1-E8E75601708A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32B0E44F-3F29-487A-BCA1-E8E75601708A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADF843E5-C57D-4C95-A497-B79945169D33}
+	EndGlobalSection
+EndGlobal

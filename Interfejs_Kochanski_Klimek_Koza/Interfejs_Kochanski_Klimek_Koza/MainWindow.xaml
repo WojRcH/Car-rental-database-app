@@ -1,0 +1,136 @@
+﻿<Window x:Class="Interfejs_Kochanski_Klimek_Koza.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interfejs_Kochanski_Klimek_Koza"
+        mc:Ignorable="d"
+        Title="Wypożyczalnia samochodów" Height="879.45" Width="1348" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Opcje" VerticalContentAlignment="Center">
+                    <MenuItem x:Name="MIklient" Header="Edytuj dane o klientach" Click="MIklient_Click"/>
+                    <MenuItem x:Name="MIsamochod" Header="Edytuj bazę samochodów" Click="MIsamochod_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Wypożycz samochód">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="89*"/>
+                        <ColumnDefinition Width="177*"/>
+                        <ColumnDefinition Width="266*"/>
+                        <ColumnDefinition Width="266*"/>
+                        <ColumnDefinition Width="266*"/>
+                        <ColumnDefinition Width="266*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="DGwypo" CanUserSortColumns="False"  AutoGenerateColumns="false" Grid.ColumnSpan="3" Grid.RowSpan="4" Grid.Row="1" SelectionMode="Single"  SelectionUnit="FullRow" IsReadOnly="True" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID samochodu" Binding="{Binding ID_samochod}"/>
+                            <DataGridTextColumn Header="Marka" Binding="{Binding marka}"/>
+                            <DataGridTextColumn Header="Model" Binding="{Binding model}"/>
+                            <DataGridTextColumn Header="Silnik" Binding="{Binding silnik}"/>
+                            <DataGridTextColumn Header="Pojemność" Binding="{Binding pojemnosc}"/>
+                            <DataGridTextColumn Header="Numer rejestracyjny" Binding="{Binding numer_rejestracyjny}"/>
+                            <DataGridTextColumn Header="Cena (za dzień)" Binding="{Binding cena}"/>
+                            <DataGridTextColumn Header="Stan Techniczny" Binding="{Binding stantechniczny}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnrefresh" Content="Odśwież dane" Grid.Column="3" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Grid.Row="4" Click="btnrefresh_Click"/>
+                    <Button x:Name="btnwypo" Content="Wypożycz" Grid.Column="5" Width="100" Height="50" Click="Button_Click" Grid.Row="4"/>
+                    <DatePicker x:Name="DPdzis" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Margin="109,10,0,0"/>
+                    <DatePicker x:Name="DPdokiedy" Grid.Column="5" HorizontalAlignment="Left" Margin="0,125,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="20" Width="266"/>
+                    <Label Content="Do kiedy wypożyczyć samochód?" Grid.Column="3" HorizontalAlignment="Left" Margin="10,123,0,0" Grid.Row="1" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="CBklient" Grid.Column="5"  Grid.Row="2"  DisplayMemberPath="klient" FontSize="20" Margin="0,35,0,91" />
+                    <Label Content="Uwagi do wypożyczenia(opcjonalne)&#xD;&#xA;" Grid.Column="3" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="2"/>
+                    <Label Content="Wybierz samochód do wypożyczenia:" HorizontalAlignment="Left" Margin="0,112,0,0" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="3"/>
+                    <Label Content="Dzisiejsza data:" Grid.Column="4" HorizontalAlignment="Left" Margin="227,8,0,0" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="TBuwagi" Grid.Column="5" HorizontalAlignment="Left" Margin="0,0,0,124" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" FontSize="20" Width="266"/>
+                    <Label Content="Który klient wypożycza samochód?" Grid.Column="3" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="2" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="2"/>
+
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Oddaj samochód">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="DGzwrot" Grid.ColumnSpan="2" Grid.RowSpan="4" Grid.Row="1"  AutoGenerateColumns="False" SelectionMode="Single"  SelectionUnit="FullRow" IsReadOnly="True" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Marka" Binding="{Binding marka}"/>
+                            <DataGridTextColumn Header="Model" Binding="{Binding model}"/>
+                            <DataGridTextColumn Header="Silnik" Binding="{Binding silnik}"/>
+                            <DataGridTextColumn Header="Pojemność" Binding="{Binding pojemnosc}"/>
+                            <DataGridTextColumn Header="Numer rejestracyjny" Binding="{Binding numer_rejestracyjny}"/>
+                            <DataGridTextColumn Header="Cena (za dzień)" Binding="{Binding cena}"/>
+                            <DataGridTextColumn Header="Stan Techniczny" Binding="{Binding stantechniczny}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnrefresh2" Content="Odśwież dane" Grid.Column="2" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Grid.Row="4" Click="btnrefresh_Click"/>
+                    <Button x:Name="btnoddaj" Content="Zwróć" Grid.Column="5" Width="100" Height="50" Grid.Row="4" Click="btnoddaj_Click"/>
+                    <DatePicker x:Name="DPdzis2" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Margin="109,10,0,0"/>
+                    <Label Content="Wybierz samochód do zwrotu:" HorizontalAlignment="Left" Margin="0,112,0,0" VerticalAlignment="Top"  FontSize="20" Grid.ColumnSpan="3"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Przeglądaj rezerwacje (wypożyczenia)">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="DGprzeg" Grid.ColumnSpan="5" Grid.Row="1" Grid.RowSpan="5"  AutoGenerateColumns="False" SelectionMode="Single"  SelectionUnit="FullRow" IsReadOnly="True" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Marka" Binding="{Binding marka}"/>
+                            <DataGridTextColumn Header="Model" Binding="{Binding model}"/>
+                            <DataGridTextColumn Header="Numer rejestracyjny" Binding="{Binding numer_rejestracyjny}"/>
+                            <DataGridTextColumn Header="Stan rezerwacji(uwagi)" Binding="{Binding stan_rezerwacji}"/>
+                            <DataGridTextColumn Header="Rezerwacja od" Binding="{Binding OD}"/>
+                            <DataGridTextColumn Header="Rezerwacja do" Binding="{Binding DO}"/>
+                            <DataGridTextColumn Header="Nazwisko wypożyczającego" Binding="{Binding nazwisko}"/>
+                            <DataGridTextColumn Header="Imię wypożyczającego" Binding="{Binding imie}"/>
+                            <DataGridTextColumn Header="Telefon kontaktowy wypożyczającego" Binding="{Binding telefon}"/>
+                            <DataGridTextColumn Header="Numer dokumentu wypożyczającego" Binding="{Binding nrdokumentu}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnrefresh3" Content="Odśwież dane" Grid.Column="0" Width="100" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="50" Grid.Row="0" Click="btnrefresh_Click"/>
+                    <DatePicker x:Name="DPdzis3" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" FontSize="20" Margin="109,10,0,0"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
